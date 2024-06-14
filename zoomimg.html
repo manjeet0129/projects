@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="title" content="Brian's Blog" />
+    <meta name="description" content="Brian's Blog - Blog of Brian Bauska.  
+      Giving poems, deep and shallow, new inventive and boring sometimes daily 
+      notes. Topics currently; UFO's, Star Trek, Statue of Liberty, Crop Circles, 
+      Blockchain &amp; Cryptocurrencies, Training online manuals for HTML, CSS &amp; 
+      JavaScript." />
+    <meta name="author" content="Brian Bauska (bbauska)" />
+    <title>Brian's Blog</title>
+    <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
+    <!-- font awesome icons (free version)-->
+    <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script>
+    <!-- google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css" />
+    <!-- core theme css (includes bootstrap)-->
+    <link href="assets/css/briansblog-styles.css" rel="stylesheet" />
+    <style>
+      figure.zoom {
+        background-position: 50% 50%;
+        position: relative;
+        margin: 150px auto;
+        border: 5px solid white;
+        box-shadow: -1px 5px 15px black;
+        height: 300px;
+        width: 500px;
+        overflow: hidden;
+        cursor: zoom-in;
+      }
+      figure.zoom img:hover {
+        opacity: 0;
+      }
+      figure.zoom img {
+        transition: opacity 0.5s;
+        display: block;
+        width: 100%;
+        height: 100%;
+      }
+    </style>
+    <script>
+      function zoom(e) {
+        var zoomer = e.currentTarget;
+        e.offsetX ? offsetX = e.offsetX : offsetX = e.touches[0].pageX;
+        e.offsetY ? offsetY = e.offsetY : offsetX = e.touches[0].pageX;
+        x = (offsetX / zoomer.offsetWidth) * 100;
+        y = (offsetY / zoomer.offsetHeight) * 100;
+        zoomer.style.backgroundPosition = x + '% ' + y + '%';
+      }
+    </script>
+  </head>
+  <body>
+    <figure class="zoom" onmousemove="zoom(event)" style="C:\Users\yadav\Downloads\483944.jpg">
+      <img src="C:\Users\yadav\Downloads\483944.jpg" />
+    </figure>
+  </body>
+</html>

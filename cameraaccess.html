@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" href="styles/style.css"/>
+  <title>Hello, World!</title>
+  <style>
+    .box {
+      text-align: center;
+      margin-top: 50px;
+    }
+    button {
+      margin: 10px;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    video {
+      width: 80%;
+      height: auto;
+      margin-top: 20px;
+      border: 2px solid #333;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <video id="video" autoplay></video><br>
+    <button onclick="openCamera()">Open Camera</button>
+    <button onclick="closeCamera()">Close Camera</button>
+  </div>
+  <script>
+    let stream;
+
+    async function openCamera() {
+      try {
+        stream = await navigator.mediaDevices.getUserMedia({ video: true });
+        const video = document.getElementById('video');
+        video.srcObject = stream;
+      } catch (err) {
+        console.error('Error accessing camera: ', err);
+      }
+    }
+
+    function closeCamera() {
+      if (stream) {
+        let tracks = stream.getTracks();
+        tracks.forEach(track => track.stop());
+        document.getElementById('video').srcObject = null;
+      }
+    }
+  </script>
+</body>
+</html>

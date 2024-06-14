@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Love me</title>
+  <link rel="stylesheet" href="style.css" />
+   <style>
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 100vh;
+      background:linear-gradient(45deg,rgba(77, 124, 185, 0.728),rgba(237, 107, 103, 0.628));
+    }
+
+    .container{
+      position: relative;
+      width: 500px;
+      height: 600px;
+      /* border: 2px solid #333; */
+      margin: 5px;
+      overflow: hidden;
+    }
+
+    .button{
+      background-color: rgb(225, 0, 0);
+      border: none;
+      width: 90px;
+      border-radius: 10px;
+      font-size: 25px;
+      padding: 8px;
+      cursor: pointer;
+      transition: top 0.5s, left 0.5s;   
+      margin-top: 20px;
+      color: #fff;
+    }
+
+    img{
+      width: 50px;
+      height: 50px;
+    }
+
+    #target{
+      position: absolute;
+      left: 200px;
+      background-color: rgba(0, 89, 225);
+      border: none;
+      width: 90px;
+      border-radius: 10px;
+      font-size: 25px;
+      padding: 8px;
+      cursor: pointer;
+      margin-top: 20px;
+      transition: top 0.5s, left 0.5s;
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <img src="C:\Users\yadav\AppData\Local\Temp\2de0883e-96d0-4628-8ade-8317f8857549_Are-You-Love-main.zip.549\Are-You-Love-main\download (2).jpeg">
+    <img src="C:\Users\yadav\AppData\Local\Temp\5e1c9e7a-ec5f-423f-8bda-9a2f61def33d_Are-You-Love-main.zip.33d\Are-You-Love-main\Untitled design (5).png">
+    <h1>Will you be my girlfriend?</h1>
+    <button id="yesButton" class="button">Yessss</button>
+    <button id="noButton" class="button">No</button>
+    <h2 id="responseMessage"></h2>
+    <br />
+    <h4>your sweetheart manjeet</h4>
+  </div>
+  <script>
+    const target = document.getElementById('target');
+    const yesButton = document.getElementById('yesButton');
+    const noButton = document.getElementById('noButton');
+
+    yesButton.addEventListener('click', () => {
+      alert("I Love you too jaan mera babu??????");
+    });
+
+    noButton.addEventListener('click', () => {
+      alert("ma chumda na tu hai kon.......");
+    });
+
+    function moveTarget(){
+      const maxWidth = 400;
+      const maxHeight = 400;
+
+      const randomX = Math.floor(Math.random() * maxWidth);
+      const randomY = Math.floor(Math.random() * maxHeight);
+
+      target.style.left = randomX + 'px';
+      target.style.top = randomY + 'px';
+    }
+
+    target.addEventListener('mousemove', function(){
+      moveTarget();
+    });
+  </script>
+</body>
+</html>

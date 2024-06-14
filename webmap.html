@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+  </head>
+
+  <body>
+    <div id="app" style="height: 100vh">
+      <!-- Webamp will attempt to center itself within this div -->
+    </div>
+    <script src="https://unpkg.com/webamp@1.4.2/built/webamp.bundle.min.js"></script>
+    <script>
+      const Webamp = window.Webamp;
+      const webamp = new Webamp({
+        initialTracks: [
+          {
+            metaData: {
+              artist: "siddhu musewala",
+              title: "Llama Whippin' Intro",
+            },
+            // NOTE: Your audio file must be served from the same domain as your HTML
+            // file, or served with permissive CORS HTTP headers:
+            // https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS
+            url: "https://dl.dropboxusercontent.com/s/gfyjk4wf7bfqz1v36fqf6/295-Official-Audio-_-Sidhu-Moose-Wala-_-The-Kidd-_-Moosetape.mp3",
+            duration: 274,
+          },
+          {
+            metaData: {
+              artist: "Some Artist",
+              title: "Title of Second Track",
+            },
+            url: "https://www.dropbox.com/scl/fi/gfyjk4wf7bfqz1v36fqf6/295-Official-Audio-_-Sidhu-Moose-Wala-_-The-Kidd-_-Moosetape.mp3?rlkey=nyhqyv04de1qngrsvsd7rpib8&st=2oqpvq0b&dl=0",
+            duration: 274,
+          },
+        ],
+      });
+
+      // Returns a promise indicating when it's done loading.
+      webamp.renderWhenReady(document.getElementById("app"));
+    </script>
+  </body>
+</html>

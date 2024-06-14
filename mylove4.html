@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Love me</title>
+  <link rel="stylesheet" href="" />
+  <style>
+    body {
+      font-family: "Arial", sans-serif;
+           background-position: center;
+      background-size: cover;
+      background-color: #ffe4e1;
+       color: #333;
+
+      margin: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    h1 {
+      color: red;
+      font-size: 2rem;
+    }
+    img {
+      width: 290px;
+      height: 270px;
+      margin-top: 40px;
+    }
+    h4 {
+      color:#CB4335 ;
+    }
+    .container {
+      text-align: center;
+    }
+       .valentine-image {
+      width: 600px; /* Adjust the width as needed */
+      border-radius: 100px;
+        }
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+    }
+    #yesButton {
+      background-color: #eb134d;
+      font-size: 1.5rem;
+    }
+    #noButton {
+      background-color: #3817e0;
+      font-size: 1.5rem;
+    }
+    #yesButton:hover {
+      background-color: #e2047e;
+    }
+    #noButton:hover {
+      background-color: blue;
+    }
+    #responseMessage {
+     color: #B03A2E;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Will you be my girlfriend💓?</h1>
+</h1>
+    <button id="yesButton">Yessss</button>
+    <button id="noButton">No</button>
+    <h2 id="responseMessage"></h2>
+    <br />
+    <h4>Your sweetheart Manjeet</h4>
+  </div>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const yesButton = document.getElementById("yesButton");
+      const noButton = document.getElementById("noButton");
+      const responseMessage = document.getElementById("responseMessage");
+
+      const questions = [
+        "Are you sure?",
+        "Are you really sure??",
+        "Are you really really sure???",
+        "Think again?",
+        "Don't believe in second chances?",
+        "I'll be sad Babu??",
+        "I'll be more sad Meri Sona??",
+        "I'll be very sad Meri Jaan??",
+        "I'll be very very sad ??",
+        "Maybe we can talk about it?",
+        "I am not going to ask again! ??",
+        "Ok now this is hurting my feelings! ??",
+        "You are now just being mean! ??",
+        "Why are you doing this to me? ??",
+        "Please give me a chance! ??",
+        "Please Babu Meri Sona ??",
+        "I'll be very Sad  na ??",
+        "Man Jao Na Babu Pilij Babu",
+      ];
+
+      let questionIndex = 0;
+
+      yesButton.addEventListener("click", function () {
+        responseMessage.innerText = `love you to meri jan..`;
+        responseMessage.style.color = "red";
+        noButton.style.display = "none";
+      });
+
+      noButton.addEventListener("click", function () {
+        responseMessage.innerText = questions[questionIndex];
+        questionIndex = (questionIndex + 1) % questions.length;
+        // Move the "No" button
+        noButton.style.position = "relative";
+        noButton.style.left = Math.random() * 200 + "px"; // Change the value as needed
+      });
+    });
+  </script>
+</body>
+</html>
