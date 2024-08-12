@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enhanced Registration Form</title>
+    <style>
+        /* Background Night Theme */
+        body {
+            background: linear-gradient(45deg, #1e3a8a, #1f2937, #111827, #1e3a8a);
+            background-size: 400% 400%;
+            animation: gradientShiftNight 15s ease infinite;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            color: #ffff00;
+            transition: background 5s ease, color 5s ease;
+            position: relative;
+        }
+
+        @keyframes gradientShiftNight {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Glassmorphism Effect */
+        form {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            z-index: 10;
+            position: relative;
+        }
+
+        table {
+            background: rgba(33, 33, 33, 0.8);
+            backdrop-filter: blur(20px);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.7);
+            animation: scaleUp 1s ease-in-out;
+            width: 90%;
+            max-width: 600px;
+            transition: background 5s ease, box-shadow 5s ease;
+        }
+
+        @keyframes scaleUp {
+            from { transform: scale(0.8); }
+            to { transform: scale(1); }
+        }
+
+        h1 {
+            color: #ffff00;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+            animation: fadeIn 2s ease-in-out;
+            margin-bottom: 20px;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        input[type="text"],
+        input[type="password"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            border-radius: 10px;
+            background: rgba(55, 65, 81, 0.9);
+            color: #f0f0f0;
+            transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
+        }
+
+        input[type="text"]:focus,
+        input[type="password"]:focus,
+        textarea:focus,
+        select:focus {
+            border-color: #60a5fa;
+            box-shadow: 0 0 15px rgba(96, 165, 250, 0.8);
+            transform: scale(1.05);
+        }
+
+        input[type="submit"],
+        input[type="reset"] {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 10px;
+            background: linear-gradient(45deg, #4b5563, #374151);
+            color: #e5e7eb;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+            animation: buttonPulse 1.5s infinite;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+        }
+
+        input[type="submit"]:hover,
+        input[type="reset"]:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+            background: linear-gradient(45deg, #374151, #4b5563);
+        }
+
+        @keyframes buttonPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        /* Animated Moon and Stars */
+        .moon {
+            position: absolute;
+            top: 10%;
+            right: 10%;
+            width: 100px;
+            height: 100px;
+            background: radial-gradient(circle, #f0f0f0 60%, transparent 60%);
+            border-radius: 50%;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+            animation: moonGlow 3s infinite alternate;
+        }
+
+        @keyframes moonGlow {
+            from { opacity: 0.8; }
+            to { opacity: 1; }
+        }
+
+        .stars {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 0;
+            background: transparent;
+        }
+
+        .stars span {
+            position: absolute;
+            display: block;
+            width: 2px;
+            height: 2px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            animation: twinkle 1.5s infinite alternate;
+        }
+
+        @keyframes twinkle {
+            from { opacity: 0.5; }
+            to { opacity: 1; }
+        }
+
+        /* Randomize Stars Position */
+        .stars span:nth-child(1) { top: 10%; left: 10%; animation-duration: 2s; }
+        .stars span:nth-child(2) { top: 20%; left: 30%; animation-duration: 2.5s; }
+        .stars span:nth-child(3) { top: 30%; left: 50%; animation-duration: 3s; }
+        .stars span:nth-child(4) { top: 40%; left: 70%; animation-duration: 2.2s; }
+        .stars span:nth-child(5) { top: 50%; left: 90%; animation-duration: 2.8s; }
+        .stars span:nth-child(6) { top: 60%; left: 15%; animation-duration: 3.5s; }
+        .stars span:nth-child(7) { top: 70%; left: 35%; animation-duration: 2.9s; }
+        .stars span:nth-child(8) { top: 80%; left: 55%; animation-duration: 3.1s; }
+        .stars span:nth-child(9) { top: 90%; left: 75%; animation-duration: 2.7s; }
+        .stars span:nth-child(10) { top: 10%; left: 85%; animation-duration: 3.3s; }
+
+        /* Glass Breaking Effect */
+        .glass-shatter {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 20;
+            background: rgba(0, 0, 0, 0.2);
+            display: none;
+        }
+
+        .glass-shatter .shard {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.8);
+            transform-origin: center;
+            border-radius: 50%;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+            animation: shatter 1s forwards;
+            opacity: 0;
+        }
+
+        @keyframes shatter {
+            to {
+                transform: translate(200px, -200px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .shard:nth-child(1) { top: 10%; left: 10%; animation-delay: 0s; }
+        .shard:nth-child(2) { top: 20%; left: 30%; animation-delay: 0.2s; }
+        .shard:nth-child(3) { top: 30%; left: 50%; animation-delay: 0.4s; }
+        .shard:nth-child(4) { top: 40%; left: 70%; animation-delay: 0.6s; }
+        .shard:nth-child(5) { top: 50%; left: 90%; animation-delay: 0.8s; }
+
+        /* Form Disappearance Animation */
+        .form-hidden {
+            opacity: 0;
+            transform: scale(0.9);
+            transition: opacity 1s ease, transform 1s ease;
+        }
+
+        /* Meta Link */
+        .meta-link {
+            align-items: center;
+            backdrop-filter: blur(6px);
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            color: red;
+            display: flex;
+            font-size: 14px;
+            height: 40px;
+            padding: 10px 20px;
+            position: fixed;
+            left: 10px;
+            bottom: 100px;
+            text-decoration: none;
+            transition: background-color 600ms, border-color 600ms;
+            z-index: 10000;
+        }
+
+        .meta-link:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .meta-link>i,
+        .meta-link>span {
+            height: 20px;
+            line-height: 20px;
+        }
+
+        .meta-link>i {
+            color: red; /* Instagram logo color */
+        }
+
+        .meta-link>span {
+            color: black;
+            font-family: "Rubik", sans-serif;
+            transition: color 600ms;
+        }
+
+        h6 {
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            color:red;
+        }
+    </style>
+</head>
+<body>
+    <!-- Moon and Stars -->
+    <div class="moon"></div>
+    <div class="stars">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <!-- Parallax Scrolling Background -->
+    <div class="parallax">
+        <span style="left: 10%; animation-duration: 20s;"></span>
+        <span style="left: 30%; animation-duration: 15s;"></span>
+        <span style="left: 50%; animation-duration: 25s;"></span>
+        <span style="left: 70%; animation-duration: 30s;"></span>
+        <span style="left: 90%; animation-duration: 20s;"></span>
+    </div>
+
+    <!-- Animated Icons -->
+    <div class="icon"></div>
+    <div class="icon"></div>
+    <div class="icon"></div>
+    <div class="icon"></div>
+
+    <form name="p1" method="post" onsubmit="handleSubmit(event)">
+        <h1><center>Registration Form</center></h1>
+        <table>
+            <tr>
+                <td>Enter your name:</td>
+                <td><input type="text" name="t1" size="30" maxlength="15" required></td>
+            </tr>
+            <tr>
+                <td>Enter your home address:</td>
+                <td><textarea name="addr" rows="4" cols="40"></textarea></td>
+            </tr>
+            <tr>
+                <td>Select your city:</td>
+                <td>
+                    <select name="city">
+                        <option value="mumbai">Mumbai</option>
+                        <option value="pune">Pune</option>
+                        <option value="vadodara">Vadodara</option>
+                        <option value="nashik">Nashik</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Enter your country name:</td>
+                <td><input type="text" name="country" value="India"></td>
+            </tr>
+            <tr>
+                <td>Select your birth date:</td>
+                <td><input type="date" name="birthdate"></td>
+            </tr>
+            <tr>
+                <td>Select your Gender:</td>
+                <td>
+                    <input type="radio" name="gender" value="male" checked> Male<br>
+                    <input type="radio" name="gender" value="female"> Female<br>
+                </td>
+            </tr>
+            <tr>
+                <td>Select your qualification:</td>
+                <td>
+                    <input type="checkbox" name="c1" value="SSC"> SSC<br>
+                    <input type="checkbox" name="c2" value="HSC"> HSC<br>
+                    <input type="checkbox" name="c3" value="graduate"> Graduate<br>
+                    <input type="checkbox" name="c4" value="post graduate"> Post Graduate<br>
+                </td>
+            </tr>
+            <tr>
+                <td>Enter your password:</td>
+                <td><input type="password" name="password"></td>
+            </tr>
+            <tr>
+                <td><input type="submit" value="Submit"></td>
+                <td><input type="reset" value="Clear"></td>
+            </tr>
+        </table>
+    </form>
+
+    <div id="glass-shatter" class="glass-shatter">
+        <div class="shard"></div>
+        <div class="shard"></div>
+        <div class="shard"></div>
+        <div class="shard"></div>
+        <div class="shard"></div>
+    </div>
+
+    <script>
+        function handleSubmit(event) {
+            event.preventDefault();
+            document.querySelector('table').classList.add('form-hidden');
+
+            // Trigger glass shatter effect
+            const shatterElement = document.getElementById('glass-shatter');
+            shatterElement.style.display = 'block';
+
+            setTimeout(() => {
+                shatterElement.style.display = 'none';
+                alert('Form submitted successfully!');
+            }, 1500); // duration of shatter animation
+        }
+    </script>
+
+    <a id="insta-link" class="meta-link" href="https://www.instagram.com/manjeet_0129" target="_blank">
+        <i class="fab fa-instagram"></i>
+        <span> Follow me on Instagram</span>
+    </a>
+    <h6>code with rohan</h6>
+</body>
+</html>
