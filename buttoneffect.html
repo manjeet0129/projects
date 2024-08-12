@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Button Slide Effects</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+            margin: 0;
+            font-family: 'Poppins', Helvetica, sans-serif;
+            font-weight: 400;
+            background: #0b0624;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1140px;
+            text-align: center;
+            flex-grow: 1;
+        }
+
+        h2.title {
+            position: relative;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            font-size: 30px;
+        }
+
+        h2.title::after {
+            position: absolute;
+            content: '';
+            width: 50px;
+            height: 3px;
+            left: calc(50% - 25px);
+            bottom: 0;
+            background: #222222;
+        }
+
+        .btn {
+            position: relative;
+            display: inline-block;
+            margin: 15px;
+            padding: 15px 30px;
+            font-size: 16px;
+            letter-spacing: 1px;
+            text-decoration: none;
+            color: #ffffff;
+            background: mediumseagreen;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: ease-out 0.5s;
+        }
+
+        /* Button Slide Effects */
+        .btn-slide-1:hover { box-shadow: inset 0 100px 0 0 #303439; }
+        .btn-slide-2:hover { box-shadow: inset 0 -100px 0 0 #303439; }
+        .btn-slide-3:hover { box-shadow: inset 200px 0 0 0 #303439; }
+        .btn-slide-4:hover { box-shadow: inset -200px 0 0 0 #303439; }
+        .btn-slide-5:hover { box-shadow: inset 0 0 0 50px #303439; }
+        .btn-slide-6 { background: mediumseagreen; box-shadow: inset 0 0 0 50px mediumseagreen; }
+        .btn-slide-6:hover { box-shadow: inset 0 0 0 0 #303439; }
+        .btn-slide-7:hover { box-shadow: inset 200px 50px 0 0 #303439; }
+        .btn-slide-8:hover { box-shadow: inset -200px -50px 0 0 #303439; }
+        .btn-slide-9:hover { box-shadow: inset 0 0 200px 0 #303439; }
+        .btn-slide-10 { background: #303439; box-shadow: inset 0 0 200px 0 mediumseagreen; }
+        .btn-slide-10:hover { box-shadow: inset 0 0 0 0 mediumseagreen; }
+
+        /* Style for Footer Text */
+        h6 {
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            margin: 0;
+            font-size: 14px;
+            color: red;
+        }
+              .meta-link {
+            align-items: center;
+            backdrop-filter: blur(3px);
+            background-color: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 6px;
+            box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            display: inline-flex;
+            gap: 5px;
+            padding: 10px 20px;
+            position: fixed;
+            left: 10px;
+            bottom: 100px;
+            text-decoration: none;
+            transition: background-color 600ms, border-color 600ms;
+            z-index: 10000;
+        }
+
+        .meta-link:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .meta-link>i,
+        .meta-link>span {
+            height: 20px;
+            line-height: 20px;
+        }
+
+        .meta-link>i {
+            color: #d41e5b; /* Instagram logo color */
+        }
+
+        .meta-link>span {
+            color: black;
+            font-family: "Rubik", sans-serif;
+            transition: color 600ms;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 class="title">MY PROJECTS</h2>
+        <a href="onlineticket.html" class="btn btn-slide-1">Go to Page 1</a>
+        <a href="pix.html" class="btn btn-slide-2">Go to Page 2</a>
+        <a href="indiaanime.html" class="btn btn-slide-3">Go to Page 3</a>
+        <a href="heartanime.html" class="btn btn-slide-4">Go to Page 4</a>
+        <a href="happybirthday.html" class="btn btn-slide-5">Go to Page 5</a>
+        <a href="window.html" class="btn btn-slide-6">Go to Page 6</a>
+        <a href="rain.html" class="btn btn-slide-7">Go to Page 7</a>
+        <a href="weather.html" class="btn btn-slide-8">Go to Page 8</a>
+        <a href="clock.html" class="btn btn-slide-9">Go to Page 9</a>
+        <a href="animatedinput.html" class="btn btn-slide-10">Go to Page 10</a>
+    </div>
+        <a id="insta-link" class="meta-link" href="https://www.instagram.com/manjeet_0129" target="_blank">
+        <i class="fab fa-instagram"></i>
+        <span> Follow me on Instagram</span>
+    </a>
+    <h6>code with rohan</h6>
+</body>
+</html>
