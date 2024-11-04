@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Astrologer Chat</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <style>
+        html, body {
+            box-sizing: border-box;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            font-family: "Roboto", sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .chat {
+            height: 100%;
+            background-color: #1b1f3a;
+            background-image: url("https://github.com/manjeet00129/manjeet00427/blob/main/_89101973-befd-45b9-8227-bf2ee6cf921b.jpeg?raw=true");
+            background-size: cover;
+            color: #fff;
+        }
+
+        .chat-container {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .user-bar {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            background: #392f5a;
+            color: #ffd700;
+            height: 55px;
+        }
+
+        .user-bar .avatar {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        .user-bar .avatar img {
+            border-radius: 50%;
+            width: 100%;
+            height: 100%;
+            border: 2px solid #ffd700;
+        }
+
+        .user-bar .name {
+            font-size: 18px;
+            font-weight: 600;
+            flex-grow: 1;
+            color: #ffd700;
+        }
+
+        .user-bar .status {
+            font-size: 13px;
+            font-weight: 400;
+            color: #ffd700;
+        }
+
+        .user-bar .actions {
+            margin-left: 15px;
+        }
+
+        .conversation {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .conversation-container {
+            flex-grow: 1;
+            overflow-y: auto;
+            padding: 20px;
+        }
+
+        .message {
+            max-width: 75%;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 10px;
+            position: relative;
+            color: #fff;
+            clear: both;
+            font-size: 15px;
+            line-height: 1.4;
+        }
+
+        .message.sent {
+            background: #52449d;
+            float: right;
+            border-radius: 10px 0 10px 10px;
+        }
+
+        .message.sent:after {
+            content: " ";
+            position: absolute;
+            top: 0;
+            right: -10px;
+            border: 10px solid transparent;
+            border-left-color: #52449d;
+        }
+
+        .message.received {
+            background: #392f5a;
+            float: left;
+            border-radius: 0 10px 10px 10px;
+        }
+
+        .message.received:after {
+            content: " ";
+            position: absolute;
+            top: 0;
+            left: -10px;
+            border: 10px solid transparent;
+            border-right-color: #392f5a;
+        }
+
+        .metadata {
+            display: inline-block;
+            float: right;
+            padding: 0 0 0 7px;
+            position: relative;
+            bottom: -4px;
+            color: rgba(255, 215, 0, 0.8);
+        }
+
+        .metadata .time {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 11px;
+        }
+
+        .message-input {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            background: #292f45;
+        }
+
+        .message-input input {
+            flex-grow: 1;
+            padding: 10px;
+            border: none;
+            border-radius: 20px;
+            margin: 0 10px;
+            font-size: 15px;
+            background: #3e4364;
+            color: #ffd700;
+        }
+
+        .message-input .circle {
+            width: 40px;
+            height: 40px;
+            background: #52449d;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffd700;
+            cursor: pointer;
+        }
+
+        .emoji, .photo {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: #7d8488;
+            cursor: pointer;
+        }
+
+        @media screen and (max-width: 700px) {
+            .conversation {
+                height: calc(100vh - 120px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="chat">
+        <div class="chat-container">
+            <div class="user-bar">
+                <div class="avatar">
+                    <img src="https://avatars.githubusercontent.com/u/165686166?s=400&u=5456681098ae10d4c4ee2c488a64b3bd58cba390&v=4" alt="Avatar">
+                </div>
+                <div class="name">
+                    Astrologer
+                    <span class="status">online</span>
+                </div>
+                <div class="actions">
+                    <i class="zmdi zmdi-phone"></i>
+                </div>
+                <div class="actions">
+                    <i class="zmdi zmdi-videocam"></i>
+                </div>
+                <div class="actions">
+                    <i class="zmdi zmdi-more-vert"></i>
+                </div>
+            </div>
+            <div class="conversation">
+                <div class="conversation-container" id="ap">
+                    <!-- Messages will be added here -->
+                </div>
+                <form id="form" class="message-input">
+                    <div class="emoji">
+                        <i class="zmdi zmdi-star"></i>
+                    </div>
+                    <input type="text" id="val" placeholder="Seek answers from the stars...">
+                    <div class="photo">
+                        <i class="zmdi zmdi-camera"></i>
+                    </div>
+                    <div class="send">
+                        <div class="circle">
+                            <i id="msend" class="zmdi zmdi-mail-send"></i>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+$(function () {
+    var lastmsg = "";
+    var tick = "??";
+    var questionStep = -1;  // Initialize with -1 to detect first user input
+    var userDetails = {};
+
+    function updateTime() {
+        var d = new Date();
+        var h = d.getHours();
+        var t = d.getMinutes();
+        h = h < 10 ? "0" + h : h;
+        t = t < 10 ? "0" + t : t;
+        return h >= 12 ? `${h - 12}:${t} pm` : `${h}:${t} am`;
+    }
+
+    $(".status").html("last seen today at " + updateTime());
+
+    $("#form").submit(function (e) {
+        e.preventDefault();
+        $("#msend").trigger("click");
+    });
+
+    $("#msend").click(function () {
+        var msg = $("#val").val().trim();
+        if (msg !== "bhak bsdk") {
+            sendMessage(msg);
+        } else {
+            $("#val").focus();
+        }
+    });
+
+    function sendMessage(msg) {
+        var time = updateTime();
+        var para = $(`<div class='message sent'>${convert(msg)}<span class='metadata'><span class='time'>${time}</span><span class='tick'>${tick}</span></span></div>`);
+        $("#ap").append(para);
+        $(".status").css("margin-left", "0");
+        $("#form")[0].reset();
+        lastmsg = msg.toUpperCase().trim();
+        $(".conversation-container").scrollTop($(".conversation-container")[0].scrollHeight);
+        setTimeout(receiveMessage, 1100);
+    }
+
+    function receiveMessage() {
+        var time = updateTime();
+        var response = generateAstrologyResponse(lastmsg);
+        var para = $(`<div class='message received'>${response.message}<span class='metadata'><span class='time'>${time}</span></span></div>`);
+        $('#ap').append(para);
+        $(".status").html("online");
+        $(".conversation-container").scrollTop($(".conversation-container")[0].scrollHeight);
+        speak(response.speech);
+    }
+
+    function generateAstrologyResponse(msg) {
+        const questions = [
+            "What is your name?",
+            "What is your date of birth? (dd/mm/yyyy)",
+            "What is your place of birth?",
+            "What is your time of birth? (hh:mm AM/PM)"
+        ];
+
+        // If it's the first message, ask the name
+        if (questionStep === -1) {
+            questionStep = 0;  // Move to the first question
+            return { message: questions[questionStep], speech: questions[questionStep] };
+        }
+
+        // Store user responses and ask next question
+        if (questionStep < questions.length) {
+            userDetails[questions[questionStep]] = msg;
+            questionStep++;
+            if (questionStep < questions.length) {
+                return { message: questions[questionStep], speech: questions[questionStep] };
+            }
+        }
+
+        // All questions answered, generate the astrology response
+        return generatePersonalizedAstrology(userDetails);
+    }
+
+    function generatePersonalizedAstrology(details) {
+        const name = details["What is your name?"];
+        const birthDate = details["What is your date of birth? (dd/mm/yyyy)"];
+        const birthPlace = details["What is your place of birth?"];
+        const birthTime = details["What is your time of birth? (hh:mm AM/PM)"];
+
+        // Mock astrology data
+        const zodiacSigns = ["Aries", "Taurus", "Gemini", "Cancer", "Leo", "Virgo", "Libra", "Scorpio", "Sagittarius", "Capricorn", "Aquarius", "Pisces"];
+        const animals = ["Dragon", "Snake", "Horse", "Sheep", "Monkey", "Rooster", "Dog", "Pig", "Rat", "Ox", "Tiger", "Rabbit"];
+        const colors = ["Red", "Blue", "Green", "Yellow", "Purple", "Black", "White"];
+
+        // Randomly select zodiac sign, animal, color advice
+        const zodiacSign = zodiacSigns[Math.floor(Math.random() * zodiacSigns.length)];
+        const animal = animals[Math.floor(Math.random() * animals.length)];
+        const luckyColor = colors[Math.floor(Math.random() * colors.length)];
+
+        // Astrology prediction
+        const predictions = [
+            `Your zodiac sign is ${zodiacSign}, indicating resilience and strength.`,
+            `Your birth animal is ${animal}, symbolizing wisdom and energy.`,
+            `Expect a bright future with discipline as your guide.`,
+            `Connecting with nature will recharge you.`,
+            `Wear ${luckyColor} this week for good fortune.`,
+            `Focus on growth this month for big rewards.`,
+            `Your compassion makes you an uplifting presence.`,
+            `Trust your strong intuition.`,
+            `Opportunities are on the horizon. Be prepared.`
+        ];
+
+        const advice = predictions[Math.floor(Math.random() * predictions.length)];
+        const responseMessage = `Hello ${name},${advice}`;
+
+        return { message: responseMessage, speech: responseMessage };
+    }
+
+    function speak(text) {
+        if ('speechSynthesis' in window) {
+            var utterance = new SpeechSynthesisUtterance(text);
+            window.speechSynthesis.speak(utterance);
+        }
+    }
+
+    function convert(e) {
+        return e.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+    }
+});
+       </script>
+</body>
+</html>
