@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Love me</title>
+    <link rel="shortcut icon" href="mail-heart.png" type="image/x-icon" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mali:wght@300;400;500;600&display=swap" />
+
+    <style>
+        body {
+            font-family: "Mali", sans-serif;
+            background-image: url("https://github.com/manjeet00129/manjeet00427/blob/c7998bd91dc9e5dfbabbbf37bb02b2ce7236295c/360_F_248065175_UKqGpkZFZG3mPBKKKpxseqS6VlIlmzq7.jpg?raw=true");
+            background-position: center;
+            background-size: cover;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #fff;
+            text-align: center;
+        }
+        h1, h2, h4 {
+            color: #fff;
+        }
+        img {
+            width: 290px;
+            height: 270px;
+            margin-top: 40px;
+        }
+        .container {
+            text-align: center;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            margin: 5px;
+        }
+        #yesButton {
+            background-color: #eb134d;
+            font-size: 1.5rem;
+        }
+        #noButton {
+            background-color: #3817e0;
+            font-size: 1.5rem;
+        }
+        #yesButton:hover {
+            background-color: #e2047e;
+        }
+        #noButton:hover {
+            background-color: #14199b;
+        }
+        #responseMessage {
+            margin-top: 20px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #ffda79;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="https://github.com/manjeet00129/manjeet00427/blob/a972afd5e51d2447b8b731eac2b80ef29d305a25/pngtree-cartoon-couple-boy-proposing-to-girl-romantic-scene-png-image_2612166-removebg-preview.png?raw=true" alt="Proposal Image" />
+        <h1>Will you be my girlfriend?</h1>
+        <button id="yesButton">Okayyy</button>
+        <button id="noButton">No</button>
+        <h2 id="responseMessage"></h2>
+        <br />
+        <h4>From: Manjeet</h4>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const yesButton = document.getElementById("yesButton");
+            const noButton = document.getElementById("noButton");
+            const responseMessage = document.getElementById("responseMessage");
+
+            const questions = [
+                "Are you sure?",
+                "Are you really sure??",
+                "Are you really really sure???",
+                "Think again?",
+                "Don't believe in second chances?",
+                "I'll be sad, Babu??",
+                "I'll be more sad, Meri Sona??",
+                "I'll be very sad, Meri Jaan??",
+                "I'll be very very sad ??",
+                "Maybe we can talk about it?",
+                "I am not going to ask again! ??",
+                "Ok now this is hurting my feelings! ??",
+                "You are now just being mean! ??",
+                "Why are you doing this to me? ??",
+                "Please give me a chance! ??",
+                "Please Babu, Meri Sona ??",
+                "I'll be very sad na ??",
+                "Man Jao Na Babu Pilij Babu",
+            ];
+
+            let questionIndex = 0;
+
+            yesButton.addEventListener("click", function () {
+                responseMessage.innerText = "I love you too, Babu ??";
+                responseMessage.style.color = "#ffda79"; // Set a new color for the message
+                noButton.style.display = "none"; // Hide the 'No' button
+            });
+
+            noButton.addEventListener("click", function () {
+                noButton.innerText = questions[questionIndex];
+                questionIndex = (questionIndex + 1) % questions.length;
+            });
+        });
+    </script>
+</body>
+</html>
